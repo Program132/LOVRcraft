@@ -5,7 +5,7 @@ local texture = lovr.graphics.newTexture('./src/red_text.png')
 local font = lovr.graphics.newFont('./src/FfMoon-Regular.ttf')
 
 -- Définir la taille de la police
-font:setPixelDensity(2) -- Ajustez cette valeur selon vos besoins
+font:setPixelDensity(1.5) -- Ajustez cette valeur selon vos besoins
 
 -- Configuration d'une projection orthographique 2D
 local width, height = lovr.system.getWindowDimensions()
@@ -32,26 +32,26 @@ function lovr.draw(pass)
     local hovered = mx > button.x - button.w / 2 and mx < button.x + button.w / 2 and
                     my > button.y - button.h / 2 and my < button.y + button.h / 2
 
-                    if hovered and pressed then
-                      pass:setColor(.25, .25, .27)
-                      if button.text == "Quitter" then
-                        lovr.event.quit()
-                      elseif button.text == "Jouer" then
-                        print("Jouer cliqué")
-                      end
-                    elseif hovered then
-                      pass:setColor(.20, .20, .22)
-                    else
-                      pass:setColor(.15, .15, .17)
-                    end
+    if hovered and pressed then
+      pass:setColor(.25, .25, .27)
+      if button.text == "Quitter" then
+        lovr.event.quit()
+      elseif button.text == "Jouer" then
+        print("Jouer cliqué")
+      end
+    elseif hovered then
+      pass:setColor(.20, .20, .22)
+    else
+      pass:setColor(.15, .15, .17)
+    end
 
-                    -- Dessiner le plan texturé
-                    pass:setMaterial(texture)
-                    pass:plane(button.x, button.y, 0, button.w, button.h)
+    -- Dessiner le plan texturé
+    pass:setMaterial(texture)
+    pass:plane(button.x, button.y, 0, button.w, button.h)
 
-                    -- Dessiner le texte par-dessus
-                    pass:setColor(1, 1, 1) -- Couleur du texte
-                    pass:setFont(font)
-                    pass:text(button.text, button.x, button.y, 0)
-                  end
-                end
+    -- Dessiner le texte par-dessus
+    pass:setColor(1, 1, 1) -- Couleur du texte
+    pass:setFont(font)
+    pass:text(button.text, button.x, button.y, 0)
+  end
+end

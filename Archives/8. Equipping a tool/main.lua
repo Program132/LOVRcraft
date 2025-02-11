@@ -206,7 +206,7 @@ function lovr.draw(pass)
   pass:transform(model:getNodeTransform("WeaponBone"))
   pass:draw(swordModel, 0,-0.4,0)
   pass:pop()
-  pass:pop() -- D
+  pass:pop()
 
 
   -- Ground:
